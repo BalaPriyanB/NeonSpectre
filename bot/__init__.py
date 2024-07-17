@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import asyncio
 from tzlocal import get_localzone
 from pytz import timezone
 from datetime import datetime
@@ -783,10 +784,23 @@ else:
     qb_client.app_set_preferences(qb_opt)
 
 log_info("Creating client from BOT_TOKEN")
-bot = tgClient('bot', TELEGRAM_API, TELEGRAM_HASH, bot_token=BOT_TOKEN, workers=1000,
-               parse_mode=enums.ParseMode.HTML).start()
-bot_loop = bot.loop
-bot_name = bot.me.username
-scheduler = AsyncIOScheduler(timezone=str(
-    get_localzone()), event_loop=bot_loop)
-    
+async def main():
+    # Initialize Pyrogram client
+    bot = Client(
+        'bot',
+        api_id=os.getenv('TELEGRAM_API'),
+        api_hash=os.getenv('TELEGRAM_HASH'),
+        bot_token=os.getenv('BOT_TOKEN'),
+        workers=1000,
+        parse_mode=enums.ParseMode.HTML
+    )
+
+    await bot.start()
+    bot_name = (await bot.get_me()).username
+    print(f"Bot @{bot_name} started.")
+    scheduler = AsyncIOScheduler(timezone=str(get_localzone()), event_loop=asyncio.get_event_loop())
+    scheduler.start()
+    await bot.idle()
+
+if __name__ == "__main__":
+    asyncio.run(main())
