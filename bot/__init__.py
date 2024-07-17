@@ -20,10 +20,6 @@ from logging import getLogger, Formatter, FileHandler, StreamHandler, INFO, basi
 from uvloop import install
 
 
-bot = tgClient(name='bot', api_id=os.getenv('TELEGRAM_API'), api_hash=os.getenv('TELEGRAM_HASH'), bot_token=os.getenv('BOT_TOKEN'), workers=1000, parse_mode=enums.ParseMode.HTML)
-
-
-
 faulthandler_enable()
 install()
 setdefaulttimeout(600)
@@ -789,6 +785,8 @@ else:
     qb_client.app_set_preferences(qb_opt)
 
 log_info("Creating client from BOT_TOKEN")
+bot = tgClient(name='bot', api_id=TELEGRAM_API, api_hash=TELEGRAM_HASH, bot_token=BOT_TOKEN, workers=1000,parse_mode=enums.ParseMode.HTML)
+
 async def main():
 
     await bot.start()
