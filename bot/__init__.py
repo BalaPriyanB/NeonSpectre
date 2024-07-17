@@ -787,12 +787,11 @@ else:
 log_info("Creating client from BOT_TOKEN")
 bot = tgClient(name='bot', api_id=TELEGRAM_API, api_hash=TELEGRAM_HASH, bot_token=BOT_TOKEN, workers=1000,parse_mode=enums.ParseMode.HTML)
 bot_name = "NeonSpectre"
+scheduler = AsyncIOScheduler(timezone=str(get_localzone()), event_loop=asyncio.get_event_loop())
 
 async def main():
 
     await bot.start()
-    scheduler = AsyncIOScheduler(timezone=str(get_localzone()), event_loop=asyncio.get_event_loop())
-    scheduler.start()
     await bot.idle()
 
 if __name__ == "__main__":
