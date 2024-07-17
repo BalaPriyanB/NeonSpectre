@@ -786,7 +786,7 @@ else:
 log_info("Creating client from BOT_TOKEN")
 async def main():
     # Initialize Pyrogram client
-    bot = Client(
+    bot = tgClient(
         'bot',
         api_id=os.getenv('TELEGRAM_API'),
         api_hash=os.getenv('TELEGRAM_HASH'),
