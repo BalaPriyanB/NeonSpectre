@@ -19,6 +19,11 @@ from socket import setdefaulttimeout
 from logging import getLogger, Formatter, FileHandler, StreamHandler, INFO, basicConfig, error as log_error, info as log_info, warning as log_warning
 from uvloop import install
 
+
+bot = tgClient(name='bot', api_id=os.getenv('TELEGRAM_API'), api_hash=os.getenv('TELEGRAM_HASH'), bot_token=os.getenv('BOT_TOKEN'), workers=1000, parse_mode=enums.ParseMode.HTML)
+
+
+
 faulthandler_enable()
 install()
 setdefaulttimeout(600)
@@ -785,15 +790,6 @@ else:
 
 log_info("Creating client from BOT_TOKEN")
 async def main():
-    # Initialize Pyrogram client
-    bot = tgClient(
-        'bot',
-        api_id=os.getenv('TELEGRAM_API'),
-        api_hash=os.getenv('TELEGRAM_HASH'),
-        bot_token=os.getenv('BOT_TOKEN'),
-        workers=1000,
-        parse_mode=enums.ParseMode.HTML
-    )
 
     await bot.start()
     bot_name = (await bot.get_me()).username
