@@ -786,7 +786,7 @@ else:
 
 log_info("Creating client from BOT_TOKEN")
 bot = tgClient(name='bot', api_id=TELEGRAM_API, api_hash=TELEGRAM_HASH, bot_token=BOT_TOKEN, workers=1000,parse_mode=enums.ParseMode.HTML)
-bot_name = bot.me.username
+bot_name = "NeonSpectre"
 
 async def main():
 
