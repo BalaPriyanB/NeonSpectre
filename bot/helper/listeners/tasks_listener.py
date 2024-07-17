@@ -30,7 +30,7 @@ from bot.helper.mirror_utils.status_utils.ddl_status import DDLStatus
 from bot.helper.mirror_utils.status_utils.rclone_status import RcloneStatus
 from bot.helper.mirror_utils.status_utils.queue_status import QueueStatus
 from bot.helper.mirror_utils.upload_utils.gdriveTools import GoogleDriveHelper
-from bot.helper.mirror_utils.upload_utils.hydrogramEngine import TgUploader
+from bot.helper.mirror_utils.upload_utils.pyrogramEngine import TgUploader
 from bot.helper.mirror_utils.upload_utils.ddlEngine import DDLUploader
 from bot.helper.mirror_utils.rclone_utils.transfer import RcloneTransferHelper
 from bot.helper.telegram_helper.message_utils import sendCustomMsg, sendMessage, editMessage, deleteMessage, delete_all_messages, delete_links, sendMultiMessage, update_all_messages
